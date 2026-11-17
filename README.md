@@ -4,6 +4,8 @@
 
 **[Live Demo](https://ntn-boilerplate.netlify.app/)**
 
+> This repository is a copy of [ntn-boilerplate by Sven Parker](https://github.com/knogobert/ntn-boilerplate) (MIT license). The only changes are an `.npmrc`, an `engines` field and updated run instructions so it builds on current Node versions.
+
 An opinionated starter template for a quick start with the following technologies up on a site after only 5 minutes!
 
 ![ntn-boilerplate-preview-dark](https://user-images.githubusercontent.com/770560/109560601-5dcc5c80-7adc-11eb-9eb8-98663294b6aa.png)
@@ -51,40 +53,42 @@ This way it doesn't clutter up your repo with large unmanageable files. But *do 
 
 ---
 
-## Project commands
+## Requirements
 
-1. 📦 Install dependencies.
+- Node.js 20 or newer (verified on Node 20.20, 22.23 and 24.21)
+- npm 9 or newer
+
+This project uses Nuxt 2.15, which bundles webpack 4. On Node 17 and newer, webpack 4 needs the legacy OpenSSL provider, otherwise the build stops with `error:0308010C:digital envelope routines::unsupported`. The `.npmrc` in this repo sets `node-options=--openssl-legacy-provider`, so every `npm run ...` command gets it automatically. If you call `npx nuxt ...` directly instead, set it yourself:
 
 ```bash
-npm install
+export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
-2. 🏗 Run the project for local dev. This will start a hot-reloading server at `localhost:3000`.
+## Install
 
 ```bash
+npm ci
+```
+
+## Run
+
+```bash
+# dev server with hot reload at http://localhost:3000 (local Netlify CMS at /admin)
 npm run dev
-```
 
-3. 🌌 Build the app for server-side rendered deployment. See more about **Universal SSR** in the [Nuxt.js docs](https://nuxtjs.org/guide#server-rendered-universal-ssr-).
-
-```bash
+# build, then generate a fully pre-rendered static site into dist/
 npm run build
-
-# And to serve that deployment...
-npm run start
-```
-
-4. ⚡️ Generate a fully pre-rendered static site. See more [in the docs](https://nuxtjs.org/guide#static-generated-pre-rendering-).
-
-```bash
 npm run generate
+
+# serve the generated dist/ folder at http://localhost:3000
+npm run start
 ```
 
 ### Personalize setup
 
 1. Copy and change the .env-file
 
-   - `cp .env-example .env`
+   - `cp .example.env .env`
    - Then change the values
 
 2. Change the value on these lines

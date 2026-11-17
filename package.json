@@ -14,6 +14,9 @@
     "url": "https://github.com/knogobert/ntn-boilerplate#readme"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@nuxt/content": "^1.13.1",
     "nuxt": "^2.15.0"
